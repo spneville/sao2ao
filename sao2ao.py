@@ -11,6 +11,7 @@ import os
 import aobas
 import readbas
 import readinfsao
+import writemos
 
 def check_files_exist():
     """
@@ -45,3 +46,5 @@ if __name__ == '__main__':
     saos=[]
     readinfsao.read_infsao_file(atoms,natm,saos)
     
+    # Write the MOs in terms of the AOs to file
+    writemos.write_mos(atoms,natm,saos)
