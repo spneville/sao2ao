@@ -112,7 +112,7 @@ def write_mos(mofile, atoms, natm, saos):
                         pieces = string1.split('.')
                         string1 = '-.'+pieces[0]+pieces[1]
                         pieces = string1.split('e')
-                        string1 = pieces[0][0:len(pieces[0])-1]+'D'+'{0:+03d}'.format(int(pieces[1])-1)
+                        string1 = pieces[0][0:len(pieces[0])-1]+'D'+'{0:+03d}'.format(int(pieces[1])+1)
                     else:
                         string1 = '{:{width}.{prec}e}'.format(new_vec[indx], width=20, prec=14)
                         pieces = string1.split('e')

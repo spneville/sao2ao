@@ -107,4 +107,4 @@ def read_infsao_file(saofile, atoms, natm, saos):
         # the last irrep
         if irrep+1 == aobas.nirrep:
             break
-            
+        
