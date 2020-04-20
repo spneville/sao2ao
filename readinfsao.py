@@ -7,15 +7,15 @@ import numpy as np
 import copy
 import aobas
 
-def read_infsao_file(atoms,natm,saos):
+def read_infsao_file(saofile, atoms, natm, saos):
     """
     Parses the infsao file
     """
-
+    
     #
     # Read in the infsao file
     #
-    with open('infsao', 'r') as infsao:
+    with open(saofile, 'r') as infsao:
         infsao_lines = infsao.readlines()
 
     #

@@ -7,7 +7,7 @@ import numpy as np
 import math
 import aobas
 
-def write_mos(atoms,natm,saos):
+def write_mos(mofile, atoms, natm, saos):
     """
     Simultaneous reading of the original mos file and writing of
     the new mos file
@@ -37,7 +37,7 @@ def write_mos(atoms,natm,saos):
     #
     # Read in the mos file
     #
-    with open('mos', 'r') as mosfile:
+    with open(mofile, 'r') as mosfile:
         mos = mosfile.readlines()
 
     #
