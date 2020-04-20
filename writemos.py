@@ -105,12 +105,20 @@ def write_mos(atoms,natm,saos):
                 # Write the coefficient string
                 string=''
                 for indx in range(iindx-1,findx):
-                    string = string+"{0:.14e}".format(new_vec[indx])
-
-                    print(string)
-                    
-                sys.exit()
-                    
+                    # Hack to get around the need to use Fortran 20d.14 formatting,
+                    # which doesn't seem to be possible using Python formatting...
+                    if (new_vec[indx] < 0):
+                        string1 = '{:{width}.{prec}e}'.format(-new_vec[indx], width=20, prec=14)
+                        pieces = string1.split('.')
+                        string1 = '-.'+pieces[0]+pieces[1]
+                        pieces = string1.split('e')
+                        string1 = pieces[0][0:len(pieces[0])-1]+'D'+'{0:+03d}'.format(int(pieces[1])-1)
+                    else:
+                        string1 = '{:{width}.{prec}e}'.format(new_vec[indx], width=20, prec=14)
+                        pieces = string1.split('e')
+                        string1 = pieces[0]+'D'+'{0:+03d}'.format(int(pieces[1]))
+                    string = string + string1
+                
                 # Write the coefficient string to mos.ao
                 outfile.write(string+'\n')
                 
